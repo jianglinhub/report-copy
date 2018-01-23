@@ -4,16 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:client": "webpack --config build/webpack.config.client.js",
+    "build:client": "webpack --config build/webpack.config.client.js --progress",
     "dev:client": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
     "dev:server": "nodemon server/server.js",
     "clear": "rimraf webapp",
     "build": "npm run clear && npm run build:client",
     "lint": "eslint --ext .js --ext .jsx client/",
+    "packageVersion": "echo $npm_package_version",
     "precommit": "npm run lint",
     "start": "pm2 start startup.json",
-    "packageVersion": "echo $npm_package_version",
-    "start:docker": "pm2 start startup.json --env docker"
+    "start:docker": "pm2-docker start startup.json --env docker"
   },
   "author": "jianglin <jianglin.ren@nx-engine.com>",
   "license": "MIT",

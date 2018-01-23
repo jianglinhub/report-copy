@@ -12,6 +12,8 @@ WORKDIR /ice/
 
 RUN cp -r /ice-node-cache/node_modules .
 
+RUN npm install pm2 -g
+
 RUN npm install --production
 
-RUN npm start:docker
+CMD npm run start:docker
