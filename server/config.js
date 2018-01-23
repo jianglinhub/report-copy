@@ -22,8 +22,7 @@ let config = {
 }
 config.pkg = packageConfig
 
-let modules = process.env.MODULES || service
-modules.forEach((item, index) => {
+service.forEach((item, index) => {
   config[item] = { host: gateway, uri: `${item}/` }
 })
 
