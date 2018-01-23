@@ -7,6 +7,7 @@ RUN cd $(npm root -g)/npm && npm install fs-extra && sed -i -e s/graceful-fs/fs-
 COPY webapp /ice/webapp
 COPY server /ice/server
 COPY package.json /ice/package.json
+COPY startup.json /ice/startup.json
 
 WORKDIR /ice/
 
