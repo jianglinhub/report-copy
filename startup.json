@@ -1,0 +1,17 @@
+{
+  "name": "wifi-stick",
+  "script": "./server/server.js",
+  "instances": 0,
+  "exec_mode": "cluster",
+  "max_memory_restart": "1024M",
+  "error_file": "/var/log/moonflow-webapp/error.log",
+  "out_file": "/var/log/moonflow-webapp/out.log",
+  "combine_logs": true,
+  "env": {
+    "PORT": "3333",
+    "DASHBOARD_SERVICE": "",
+    "GATEWAY": "",
+    "MODULES": ["vehicle"]
+  },
+  "env_docker": {}
+}
