@@ -16,14 +16,14 @@ let config = {
     }
   },
   'dashboard-api': {
-    'host': dashboard_service,
+    'host': `http://${dashboard_service}/`,
     'uri': 'dashboard-api/'
   }
 }
 config.pkg = packageConfig
 
 service.forEach((item, index) => {
-  config[item] = { host: gateway, uri: `${item}/` }
+  config[item] = { host: `http://${gateway}/`, uri: `${item}/` }
 })
 
 module.exports = config
