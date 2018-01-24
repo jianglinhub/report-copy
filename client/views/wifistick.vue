@@ -17,13 +17,13 @@
 
     <Modal
         v-model="isActiveModalShow"
-        title="验证"
+        title="确认"
         width="300">
-        <p style="margin-bottom: 10px;font-size: 14px">请<span style="color: red">补全</span>激活车辆VIN码<span style="color: red">后十四位</span></p>
-        VIN码：LSV<Input placeholder="VIN码后14位" style="width: 200px" />
+        <p style="margin-bottom: 10px;font-size: 14px">请确认当前车辆VIN码为：</p>
+        <p style="margin-bottom: 10px;font-size: 18px;color: red">GBTESTVIN12345END</p>
         <div slot="footer">
           <Button @click="isActiveModalShow = false">取消</Button>
-          <Button type="primary" @click="activate">确定</Button>
+          <Button type="primary" @click="activate">激活</Button>
         </div>
     </Modal>
   </div>
