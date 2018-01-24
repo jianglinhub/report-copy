@@ -7,10 +7,9 @@
   "error_file": "/var/log/wifi-stick-spa/error.log",
   "out_file": "/var/log/wifi-stick-spa/out.log",
   "combine_logs": true,
-  "env": {
+  "env_config": {
     "PORT": "3333",
     "DASHBOARD_SERVICE": "",
     "GATEWAY": ""
-  },
-  "env_docker": {}
+  }
 }

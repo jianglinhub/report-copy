@@ -1,6 +1,6 @@
 {
   "name": "svw-mib2-system-wifistick-spa",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,8 +12,8 @@
     "lint": "eslint --ext .js --ext .vue client/",
     "packageVersion": "echo $npm_package_version",
     "precommit": "npm run lint",
-    "start": "pm2 start startup.json",
-    "start:docker": "pm2-docker start startup.json --env docker"
+    "start": "pm2 start startup.json --env config",
+    "start:docker": "pm2-docker start startup.json"
   },
   "author": "jianglin <jianglin.ren@nx-engine.com>",
   "license": "MIT",
