@@ -10,8 +10,7 @@
   "env": {
     "PORT": "3333",
     "DASHBOARD_SERVICE": "",
-    "GATEWAY": "",
-    "MODULES": ["vehicle"]
+    "GATEWAY": ""
   },
   "env_docker": {}
 }
