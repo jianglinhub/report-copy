@@ -1,7 +1,7 @@
 <template>
   <div class="ne-search">
     查询条件：
-    <Select v-model="searchParams.selected" style="width: 160px">
+    <Select v-model="searchParams.selected" style="width: 160px" disabled>
       <Option value="vin">VIN</Option>
       <Option value="ssin">SSID</Option>
       <Option value="sn">设备序列号</Option>
