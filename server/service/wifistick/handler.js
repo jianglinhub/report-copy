@@ -10,14 +10,6 @@ class Test {
     })
     return request.transfer(url)
   }
-
-  testPost(params) {
-    let url = signUrl('dashboard-bus-service', 'testPost', {
-      method: 'POST',
-      body: params
-    })
-    return request.transfer(url)
-  }
 }
 
 module.exports = exports = new Test

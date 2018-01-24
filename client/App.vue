@@ -1,5 +1,5 @@
 <template>
-  <router-view :permission="permission"></router-view>
+  <router-view></router-view>
 </template>
 
 <script>
@@ -8,14 +8,6 @@
       return {
         permission: {},
       }
-    },
-    created() {
-      // this.$http.get('api/findFunctionsByResource')
-      //   .then((res) => {
-      //     if (res.body.status && res.body.admin) {
-      //       this.permission = res.body.admin.permission
-      //     }
-      //   })
     },
   }
 </script>

@@ -1,11 +1,11 @@
 {
-  "name": "wifi-stick",
+  "name": "wifi-stick-spa",
   "script": "./server/server.js",
   "instances": 0,
   "exec_mode": "cluster",
   "max_memory_restart": "1024M",
-  "error_file": "/var/log/moonflow-webapp/error.log",
-  "out_file": "/var/log/moonflow-webapp/out.log",
+  "error_file": "/var/log/wifi-stick-spa/error.log",
+  "out_file": "/var/log/wifi-stick-spa/out.log",
   "combine_logs": true,
   "env": {
     "PORT": "3333",

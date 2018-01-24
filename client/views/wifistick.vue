@@ -9,10 +9,23 @@
     </Select>
     <Input v-model="searchParams.keywords" placeholder="请输入关键字" style="width: 160px" />
     <Button type="primary" @click="queryWifi">查询</Button>
+    <Button type="primary" @click="isActiveModalShow = true" v-show="activeStatus">激活</Button>
 
     <div style="margin-top: 12px">
       <Table border :columns="columns" :data="data" />
     </div>
+
+    <Modal
+        v-model="isActiveModalShow"
+        title="验证"
+        width="300">
+        <p style="margin-bottom: 10px;font-size: 14px">请<span style="color: red">补全</span>激活车辆VIN码<span style="color: red">后十四位</span></p>
+        VIN码：LSV<Input placeholder="VIN码后14位" style="width: 200px" />
+        <div slot="footer">
+          <Button @click="isActiveModalShow = false">取消</Button>
+          <Button type="primary" @click="activate">确定</Button>
+        </div>
+    </Modal>
   </div>
 </template>
 
@@ -32,11 +45,14 @@
           key: 'content',
         }],
         data: [],
+        activeStatus: false,
+        isActiveModalShow: false,
       }
     },
     watch: {
       searchParams() {
         this.data = []
+        this.activeStatus = false
       },
     },
     methods: {
@@ -50,6 +66,12 @@
           params,
         }).then(res => {
           if (res.data.status === 'SUCCEED') {
+            const active = res.data.data.vehicleWifiStickActiveStatus
+            if (active === 'ACTIVE') {
+              this.activeStatus = false
+            } else {
+              this.activeStatus = true
+            }
             this.data = this.handlerData(res.data.data)
           } else {
             this.$Message.error({
@@ -59,6 +81,7 @@
           }
         })
       },
+
       handlerData(data) {
         const keys = Object.keys(data)
         const values = Object.values(data)
@@ -70,6 +93,10 @@
           tableData.push(obj)
         }
         return tableData
+      },
+
+      activate() {
+        console.log('ok') //eslint-disable-line
       },
     },
   }

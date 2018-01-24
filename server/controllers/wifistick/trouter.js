@@ -7,8 +7,4 @@ trouter.get("/queryWifi", async(ctx) => {
   ctx.body = await handler.queryWifi(ctx.request.query)
 })
 
-trouter.post("/testPost", async(ctx) => {
-  ctx.body = await handler.testPost(ctx.request.body)
-})
-
 module.exports = trouter
