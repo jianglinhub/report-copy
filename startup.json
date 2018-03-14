@@ -1,11 +1,11 @@
 {
-  "name": "wifi-stick-spa",
+  "name": "workorder",
   "script": "./server/server.js",
-  "instances": 0,
+  "instances": 1,
   "exec_mode": "cluster",
   "max_memory_restart": "1024M",
-  "error_file": "/var/log/wifi-stick-spa/error.log",
-  "out_file": "/var/log/wifi-stick-spa/out.log",
+  "error_file": "/var/log/workorder/error.log",
+  "out_file": "/var/log/workorder/out.log",
   "combine_logs": true,
   "env_config": {
     "PORT": "3333",

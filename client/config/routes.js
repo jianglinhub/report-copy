@@ -1,9 +1,13 @@
-import WifiStick from '../views/wifistick.vue'
+import SingleDataReport from '../views/singleDataReport.vue'
+import MultiDataReport from '../views/multiDataReport.vue'
 
 export default [{
-  path: '/',
-  component: WifiStick,
+  path: '/singleDataReport',
+  component: SingleDataReport,
 }, {
-  path: '/wifistick',
-  component: WifiStick,
+  path: '/multiDataReport',
+  component: MultiDataReport,
+}, {
+  path: '/',
+  component: SingleDataReport,
 }]

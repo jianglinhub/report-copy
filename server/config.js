@@ -1,7 +1,8 @@
-const service = ['vehicle']
+const service = ['api']
 const packageConfig = require('../package.json')
-const dashboard_service = process.env.DASHBOARD_SERVICE || 'http://127.0.0.1:3011/'
-const gateway = process.env.GATEWAY || 'http://172.16.88.35:7777/'
+const servicePrefix = 'v1'
+const dashboard_service = process.env.DASHBOARD_SERVICE || '127.0.0.1:3011'
+const gateway = process.env.GATEWAY || '172.28.62.85:8091'
 
 let config = {
   'port': process.env.PORT || '3333',
@@ -21,6 +22,7 @@ let config = {
   }
 }
 config.pkg = packageConfig
+config.servicePrefix = servicePrefix
 
 service.forEach((item, index) => {
   config[item] = { host: `http://${gateway}/`, uri: `${item}/` }

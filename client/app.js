@@ -5,8 +5,7 @@ import iView from 'iview'
 import 'ne-istyle/index/main.less'
 import App from './App.vue'
 import routes from './config/routes'
-import axios from './config/http'
-import './common/css/svw_mib2_theme_index.less'
+import './common/css/svw_rtm_theme_index.less'
 
 Vue.use(VueRouter)
 Vue.use(iView)
@@ -14,8 +13,6 @@ Vue.use(iView)
 const router = new VueRouter({
   routes,
 })
-
-Vue.prototype.$http = axios
 
 new Vue({ // eslint-disable-line
   el: '#app',

@@ -23,5 +23,5 @@ bole.output([
 var boleLog = bole(config.pkg.name)
 
 module.exports = {
-  boleLog: boleLog
+  boleLog
 }
