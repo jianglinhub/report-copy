@@ -11,12 +11,48 @@ class Test {
     return request.transfer(url)
   }
 
+  getVehInfo(params) {
+    let url = signUrl(`api/${servicePrefix}/report/single`, 'getVehInfo', {
+      query: params
+    })
+    return request.transfer(url)
+  }
+
   getMultiReport(params) {
     let url = signUrl(`api/${servicePrefix}/report`, 'multi', {
       query: params
     })
     return request.transfer(url)
   }
+
+  queryMultiVehInfos(params) {
+    let url = signUrl(`api/${servicePrefix}/report/multi`, 'queryVinOrPlate', {
+      query: params
+    })
+    return request.transfer(url)
+  }
+
+  queryMonitorReport(params) {
+    let url = signUrl(`api/${servicePrefix}/report/vehicle`, 'monitor', {
+      query: params
+    })
+    return request.transfer(url)
+  }
+
+  queryWorkOrderReport(params) {
+    let url = signUrl(`api/${servicePrefix}/report/vehicle`, 'workOrder', {
+      query: params
+    })
+    return request.transfer(url)
+  }
+
+  queryModelAlarmNumReport(params) {
+    let url = signUrl(`api/${servicePrefix}/report/vehicle`, 'getModelAlarmNum', {
+      query: params
+    })
+    return request.transfer(url)
+  }
+
 
   // 导出示例
   //   exportOrderList(params, filePath) {

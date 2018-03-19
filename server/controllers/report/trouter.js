@@ -2,7 +2,7 @@ const path = require("path")
 const log = require("../../util/boleLog").boleLog
 const filters = require('../../util/utils')
 const trouter = require(path.join(process.cwd(), "server/util/trouter"))
-const handler = require(path.join(process.cwd(), "server/service/workorder/handler"))
+const handler = require(path.join(process.cwd(), "server/service/report/handler"))
 const send = require('koa-send')
 
 trouter.get("/getSingleReport", async(ctx) => {
@@ -12,8 +12,43 @@ trouter.get("/getSingleReport", async(ctx) => {
   ctx.body = res
 })
 
+trouter.get("/getVehInfo", async(ctx) => {
+  const res = await handler.getVehInfo(ctx.request.query)
+  log.info('------------------ one request end ------------------')
+  console.log('\n')
+  ctx.body = res
+})
+
 trouter.get("/getMultiReport", async(ctx) => {
   const res = await handler.getMultiReport(ctx.request.query)
+  log.info('------------------ one request end ------------------')
+  console.log('\n')
+  ctx.body = res
+})
+
+trouter.get("/queryMultiVehInfos", async(ctx) => {
+  const res = await handler.queryMultiVehInfos(ctx.request.query)
+  log.info('------------------ one request end ------------------')
+  console.log('\n')
+  ctx.body = res
+})
+
+trouter.get("/queryMonitorReport", async(ctx) => {
+  const res = await handler.queryMonitorReport(ctx.request.query)
+  log.info('------------------ one request end ------------------')
+  console.log('\n')
+  ctx.body = res
+})
+
+trouter.get("/queryWorkOrderReport", async(ctx) => {
+  const res = await handler.queryWorkOrderReport(ctx.request.query)
+  log.info('------------------ one request end ------------------')
+  console.log('\n')
+  ctx.body = res
+})
+
+trouter.get("/queryModelAlarmNumReport", async(ctx) => {
+  const res = await handler.queryModelAlarmNumReport(ctx.request.query)
   log.info('------------------ one request end ------------------')
   console.log('\n')
   ctx.body = res

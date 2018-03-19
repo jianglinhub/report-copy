@@ -8,6 +8,7 @@ const request = (url, params = {}, headers = {}, method = METHODS.GET) => {
   const options = {
     headers: {
       'Content-Type': 'application/json;charset=UTF-8',
+      token: window.localStorage['dashboard-token'],
       ...headers,
     },
     method,
@@ -31,8 +32,18 @@ const get = (url, params, headers) => request(url, params, headers)
 
 export default {
 
+  getVehInfo: params => get('api/getVehInfo', params), // 获取车主信息
+
   getSingleReport: params => get('api/getSingleReport', params), // 获取单车数据统计
 
+  queryMultiVehInfos: params => get('api/queryMultiVehInfos', params), // 获取多车信息
+
   getMultiReport: params => get('api/getMultiReport', params), // 获取多车数据统计
+
+  queryMonitorReport: params => get('api/queryMonitorReport', params), // 获取监控数统计
+
+  queryWorkOrderReport: params => get('api/queryWorkOrderReport', params), // 获取报警处理数统计
+
+  queryModelAlarmNumReport: params => get('api/queryModelAlarmNumReport', params), // 获取报警数统计
 
 }

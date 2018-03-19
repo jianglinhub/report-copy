@@ -14,8 +14,8 @@
       <Button type="primary" @click="queryDataList">搜索</Button>
     </div>
 
-    <div class="ne-search vehicle-info" style="font-size:13px;border-bottom:1px solid #dddee1">
-      <span>vin：12345678927718817</span><span>车牌号：沪A 88888</span><span>车型：电动车</span><span>车主姓名：张飞</span>
+    <div class="ne-search vehicle-info" style="font-size:13px;border-bottom:1px solid #dddee1" v-show="vehInfo.vin !== ''">
+      <span>vin：{{vehInfo.vin}}</span><span>车牌号：{{vehInfo.licencePlate}}</span><span>车型：{{vehInfo.modelType}}</span><span>车主姓名：{{vehInfo.ownerName}}</span>
     </div>
 
     <!-- 中间区域 -->
@@ -62,11 +62,19 @@
         KoChart: null,
         AChart: null,
         VChart: null,
+        vehInfo: {
+          vin: '',
+          licencePlate: '',
+          ownerName: '',
+          modelType: '',
+        },
       }
     },
 
     methods: {
       async queryDataList() {
+        Object.assign(this.$data.vehInfo, this.$options.data().vehInfo)
+
         if (this.queryParams.dateRange !== '') {
           const date = Utils.activeDateFilter(this.queryParams.dateRange.getTime())
           this.queryParams.endTime = new Date(`${date.substring(0, 10)} 23:59:59`).getTime()
@@ -80,6 +88,13 @@
         if (result.data.status === 'SUCCEED') {
           const datas = result.data.data
           this.dataDistribution(datas)
+        }
+
+        const vehInfoParams = { type: copyQueryParams.type, keyword: copyQueryParams.keyword }
+        const vehInfoResult = await Http.getVehInfo(vehInfoParams)
+
+        if (vehInfoResult.data.status === 'SUCCEED') {
+          this.vehInfo = vehInfoResult.data.data
         }
       },
 
@@ -115,8 +130,8 @@
         this.VChart.setOption({ series: VData })
       },
 
-      initSocContainer(datas) {
-        const series = { data: datas, type: 'line' }
+      initSocContainer() {
+        const series = { type: 'line' }
         const params = {
           container: 'socContainer',
           series,
@@ -128,8 +143,8 @@
         this.SOCChart = chart
       },
 
-      initKoContainer(datas) {
-        const series = { data: datas, type: 'line' }
+      initKoContainer() {
+        const series = { type: 'line' }
         const params = {
           container: 'koContainer',
           series,
@@ -141,8 +156,8 @@
         this.KoChart = chart
       },
 
-      initAContainer(datas) {
-        const series = { data: datas, type: 'line' }
+      initAContainer() {
+        const series = { type: 'line' }
         const params = {
           container: 'AContainer',
           series,
@@ -154,7 +169,7 @@
         this.AChart = chart
       },
 
-      initVContainer(datas) {
+      initVContainer() {
         const opts = {
           legend: {
             right: 0,
@@ -162,10 +177,8 @@
             data: ['总电压', '电池单体电压最高值', '电池单体电压最低值'],
           },
         }
-        const series = datas
         const params = {
           container: 'VContainer',
-          series,
           option: opts,
           xName: '时间',
           yName: '电压 V',
@@ -186,7 +199,7 @@
             axisLabel: {
               formatter: (value) => {
                 const date = new Date(value)
-                const minutes = (date.getMinutes() > 10 ? date.getMinutes() : `0${date.getMinutes()}`)
+                const minutes = (date.getMinutes() >= 10 ? date.getMinutes() : `0${date.getMinutes()}`)
                 const texts = [date.getHours(), minutes]
                 return texts.join(':')
               },
@@ -199,6 +212,7 @@
         option = Object.assign(option, params.option)
         return { chart, option }
       },
+
     },
 
     mounted() {

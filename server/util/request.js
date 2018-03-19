@@ -23,8 +23,6 @@ class Request {
     } else {
       log.info(param)
     }
-    log.info('------------------  one request end  ------------------')
-    console.log('\n')
     return request(param)
   }
 
